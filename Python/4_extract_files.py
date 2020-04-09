@@ -95,6 +95,7 @@ def extract_files(main_path):
                 
                 print("Generated %d frames for class %s, filename %s" % (nb_frames, classname, filename_no_ext))
                 
+                
 
     excel_file = os.path.join(main_path,'data_file.csv')
     with open(excel_file, 'w') as fout:
@@ -122,10 +123,10 @@ def get_video_parts(video_path,full_length=True):
         train_or_test = parts[0]
     else:
         filename = parts[-1]
-        if filename.count('.') == 2:
-            filename_no_ext = filename.split('.')[0] + '.' + filename.split('.')[1].split('%')[0]
-        elif filename.count('.') == 1:   # in case the EF is an integer
-            filename_no_ext = filename.split('.')[0].split('%')[0]
+        if filename.count('.') == 3: # also have a dot for strain reduction
+            filename_no_ext = filename.split('.')[0] + '.' + filename.split('.')[1]+ '.' + filename.split('.')[2].split('%')[0]
+        elif filename.count('.') == 2:   # in case the EF is an integer
+            filename_no_ext = filename.split('.')[0] + '.'+ filename.split('.')[1].split('%')[0]
         else:
             print('Error on dot number!!')
         classname = parts[-2]

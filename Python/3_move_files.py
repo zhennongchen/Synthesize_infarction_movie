@@ -57,15 +57,18 @@ def copy_files(main_path,file_groups):
             # Get the parts.
             parts = video.split(os.path.sep)
             filename = parts[len(parts)-1]
-            print(filename)
-            ef = float(filename.split('_')[-1].split('%')[0])
+            
+            strain_reduction = float(filename.split('_')[-2])
 
-            if ef <= 30:
-                classname = 'abnormal'
-            elif ef >= 70:
+            if strain_reduction <= 0.2:
                 classname = 'normal'
+            elif strain_reduction >= 0.7:
+                classname = 'severe'
+            elif strain_reduction >= 0.4 and strain_reduction <=0.6:
+                classname = 'mild'
             else:
-                print('Error EF!')
+                print('Error!')
+                break
 
             # Check if this class exists.
             if not os.path.exists(os.path.join(main_path,group, classname)):

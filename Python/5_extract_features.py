@@ -44,7 +44,7 @@ for video in data.data:
     # Get the path to the sequence for this video.
     path = os.path.join(main_path, 'sequences', video[2] + '-' + str(seq_length) + \
         '-features')  # numpy will auto-append .npy
- 
+   
 
     # Check if we already have it.
     if os.path.isfile(path + '.npy'):
@@ -68,6 +68,7 @@ for video in data.data:
     np.save(path, sequence)
 
     pbar.update(1)
+    
    
     
     

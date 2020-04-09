@@ -10,8 +10,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 cg = settings.Experiment() 
 
-patient_list = ff.find_all_target_files(['ucsd_*/*'],os.path.join(cg.nas_patient_dir))
-
+# siemens 304225 is not in the infarction movie set
+patient_list = ff.find_all_target_files(['ucsd_bivent/*','ucsd_lvad/*','ucsd_ccta/*','ucsd_toshiba/*','ucsd_tavr_1/*','ucsd_pv/*','ucsd_siemens/2*'],os.path.join(cg.nas_patient_dir))
+print(patient_list.shape)
 
 np.random.shuffle(patient_list)
 a = np.array_split(patient_list,10)

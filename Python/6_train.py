@@ -27,7 +27,7 @@ def train(data_type, seq_length, model, saved_model=None,
     print('trainig_num is ', training_num)
     # Helper: Save the model.
     checkpointer = ModelCheckpoint(
-        filepath=os.path.join(main_folder, 'checkpoints',model, model + '-{epoch:03d}.hdf5'),
+        filepath=os.path.join(main_folder, 'checkpoints',model+'2', model + '-{epoch:03d}.hdf5'),
         #filepath=os.path.join(main_folder, 'checkpoints',model, model + '-' + data_type + \
             #'.{epoch:03d}-{val_loss:.3f}.hdf5'),
         monitor='val_acc',
@@ -42,7 +42,7 @@ def train(data_type, seq_length, model, saved_model=None,
 
     # Helper: Save results.
     #timestamp = time.time()
-    csv_logger = CSVLogger(os.path.join(main_folder, 'logs', model + '-' + 'training-log' + '.csv'))
+    csv_logger = CSVLogger(os.path.join(main_folder, 'logs', model + '2-' + 'training-log' + '.csv'))
 
     # Get the data and process it.
     if image_shape is None:
@@ -111,9 +111,9 @@ def main():
     seq_length = 20
     load_to_memory = False  # pre-load the sequences into memory
     batch_size = 32
-    nb_epoch = 100
+    nb_epoch = 150
 
-    folder_name = os.path.join(main_folder,'checkpoints',model)
+    folder_name = os.path.join(main_folder,'checkpoints',model+'2')
     os.makedirs(folder_name,exist_ok=True)
 
     # Chose images or features and image shape based on network.

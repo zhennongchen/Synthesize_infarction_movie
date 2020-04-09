@@ -4,8 +4,14 @@ import function_list as ff
 import numpy as np
 cg = settings.Experiment() 
 
-main_folder = os.path.join(cg.oct_main_dir)
-#main_folder = "/Experiment/Documents/Video_Data/UCF101/"
+#main_folder = os.path.join(cg.oct_main_dir)
+main_folder = os.path.join(cg.nas_main_dir)
+
+# a = np.load(os.path.join(main_folder,'train_patient_list.npy'),allow_pickle=True)
+# print(a.shape)
+# a = np.load(os.path.join(main_folder,'test_patient_list.npy'),allow_pickle=True)
+# print(a.shape)
+
 
 a_list = ff.find_all_target_files(['*'],os.path.join(main_folder,'sequences'))
 
