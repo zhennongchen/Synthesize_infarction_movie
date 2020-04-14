@@ -16,9 +16,9 @@ movie_list = ff.find_all_target_files(['*avi'],nas_movie_folder)
 print(movie_list.shape)
 
 
-# # make folder in octomore
+# # # make folder in octomore
 local_folder = os.path.join(cg.oct_main_dir,'raw_movie')
-# ff.make_folder([local_folder])
+# # ff.make_folder([local_folder])
 
 # copy to octomore
 for m in movie_list:

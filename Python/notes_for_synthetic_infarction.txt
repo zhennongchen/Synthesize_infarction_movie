@@ -1,4 +1,5 @@
-Patient set: 93 patients
+Patient set: 93 patients 
+(note: siemens 277235 in validation-set was not generated correctly)
 
 Data/Movie set: 
 for each patient, use time_0_segmentation as the template, generate n severe (reduction = 70-80%),
@@ -26,3 +27,8 @@ n = 4, learning_rate = 1e-5, learning_decay = 1e-6, trainig acc = 0.788 at epoch
 lstm2:
 n = 4, learning_rate = 1e-4, learning_decay = 1e-5, trainig acc = 0.919 at epoch 144, val_acc = 0.805 at epoch 140 
 
+lstm3:
+n = 6, learning_rate = 1e-4, learning_decay = 1e-5, training acc = 0.927 at epoch 179, val_acc = 0.809 at epoch 184
+
+lstm4: (300 epoch)
+n = 10, learning_rate = 1e-4, learning_decay = 1e-5, trainig acc = 0.967 at epoch 266, val_acc = 0.791 at epoch 127
