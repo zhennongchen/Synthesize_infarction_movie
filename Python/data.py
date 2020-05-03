@@ -202,8 +202,9 @@ class DataSet():
                     ss = np.concatenate((s1,s2)).reshape(2,s1.shape[0])
                     
                     X.append(ss)
-                    EF = float(sample[2].split('_')[-1])
-                    y.append(EF)
+
+                    strain_reduction = float(sample[2].split('_')[-2])
+                    y.append(strain_reduction)
                 else:
                     print('Error!!!!!')    
             
@@ -238,14 +239,14 @@ class DataSet():
 
                 if regression == 0:
                     X.append(sequence)
-                    y.append(self.get_class_one_hot(sample[1]))
+                    y.append(self.get_class_one_hot(sample[2]))
                 elif regression == 1:
                     s1 = sequence[0];s2 = sequence[9]
                     ss = np.concatenate((s1,s2)).reshape(2,s1.shape[0])
                     
                     X.append(ss)
-                    EF = float(sample[2].split('_')[-1])
-                    y.append(EF)
+                    strain_reduction = float(sample[2].split('_')[-2])
+                    y.append(strain_reduction)
                 else:
                     print('Error!!!!!')   
             yield np.array(X), np.array(y)

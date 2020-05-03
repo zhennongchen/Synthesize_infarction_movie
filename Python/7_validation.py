@@ -37,7 +37,7 @@ def validate(data_type, model,excel_save_path,learning_rate,learning_decay,seq_l
     rm = ResearchModels(len(data.classes), model, sequence_len, learning_rate,learning_decay,saved_model)
 
     final_result_list = ()
-    for sample in train:
+    for sample in test:
         movie_id = sample[2]
         if movie_id.split('_')[2] == '277235': # exclude from validation 
             print(movie_id)
@@ -60,7 +60,7 @@ def validate(data_type, model,excel_save_path,learning_rate,learning_decay,seq_l
             else:
                 predict = 2
         else:
-            truth = float(sample[2].split('_')[-1])
+            truth = float(sample[2].split('_')[-2])
             predict = predict_output[0][0]
 
         result = [movie_id,truth,predict]
@@ -74,9 +74,9 @@ def validate(data_type, model,excel_save_path,learning_rate,learning_decay,seq_l
          
     
 def main():
-    model = 'lstm'
-    rank = '4'
-    saved_model = os.path.join(main_folder,'checkpoints',model+rank,'lstm-127.hdf5')
+    model = 'lstm_regression'
+    rank = ''
+    saved_model = os.path.join(main_folder,'checkpoints',model+rank,'lstm_regression-101.hdf5')
     seq_len = 20
     learning_rate = 1e-4
     learning_decay = 1e-5
@@ -84,7 +84,7 @@ def main():
     # create folder to save result as excel file
     excel_folder = os.path.join(main_folder,'validation_result')
     ff.make_folder([excel_folder])
-    excel_save_path = os.path.join(excel_folder,model+rank+'_trainingdata.xlsx')
+    excel_save_path = os.path.join(excel_folder,model+rank+'_validation.xlsx')
 
     if model == 'conv_3d' or model == 'lrcn':
         data_type = 'images'

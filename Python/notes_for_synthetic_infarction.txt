@@ -32,3 +32,12 @@ n = 6, learning_rate = 1e-4, learning_decay = 1e-5, training acc = 0.927 at epoc
 
 lstm4: (300 epoch)
 n = 10, learning_rate = 1e-4, learning_decay = 1e-5, trainig acc = 0.967 at epoch 266, val_acc = 0.791 at epoch 127
+
+==========================================================
+lstm_regression
+n = 10, learning_rate = 1e-4, learning_decay = 1e-5, epoch = 200
+regression1 uses just two TF and regression2 uses all TFs.
+
+regression1: training_loss = 0.089 in epoch 182, validation_loss = 0.107 in epoch 100, 
+             error mean+SD = 0.113 +- 0.122
+regression2: training_loss = 0.428 in epoch 100, validation_loss = 0.419 in epoch 41

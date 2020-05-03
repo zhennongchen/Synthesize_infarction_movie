@@ -27,7 +27,7 @@ def train(data_type, seq_length, model, learning_rate,learning_decay,saved_model
     print('trainig_num is ', training_num)
     if model == 'lstm_regression':
         regression = 1
-        sequence_len = 2
+        sequence_len = 20
         monitor_par = 'val_loss'
     else:
         regression = 0
@@ -36,7 +36,7 @@ def train(data_type, seq_length, model, learning_rate,learning_decay,saved_model
 
     # Helper: Save the model.
     checkpointer = ModelCheckpoint(
-        filepath=os.path.join(main_folder, 'checkpoints',model+'4', model + '-{epoch:03d}.hdf5'),
+        filepath=os.path.join(main_folder, 'checkpoints',model+'2', model + '-{epoch:03d}.hdf5'),
         #filepath=os.path.join(main_folder, 'checkpoints',model, model + '-' + data_type + \
             #'.{epoch:03d}-{val_loss:.3f}.hdf5'),
         monitor=monitor_par,
@@ -51,7 +51,7 @@ def train(data_type, seq_length, model, learning_rate,learning_decay,saved_model
 
     # Helper: Save results.
     #timestamp = time.time()
-    csv_logger = CSVLogger(os.path.join(main_folder, 'logs', model + '4'+'-' + 'training-log' + '.csv'))
+    csv_logger = CSVLogger(os.path.join(main_folder, 'logs', model +'2'+'-' + 'training-log' + '.csv'))
 
     # Get the data and process it.
     if image_shape is None:
@@ -115,17 +115,17 @@ def main():
     """These are the main training settings. Set each before running
     this file."""
     # model can be one of lstm, lrcn, mlp, conv_3d, c3d
-    model = 'lstm'
+    model = 'lstm_regression'
     saved_model = None  # None or weights file
     class_limit = None  # int, can be 1-101 or None
     seq_length = 20
     load_to_memory = False  # pre-load the sequences into memory
     batch_size = 32
-    nb_epoch = 300
+    nb_epoch = 200
     learning_rate = 1e-4
     learning_decay = 1e-5
 
-    folder_name = os.path.join(main_folder,'checkpoints',model+'4')
+    folder_name = os.path.join(main_folder,'checkpoints',model+'2')
     os.makedirs(folder_name,exist_ok=True)
 
     # Chose images or features and image shape based on network.
