@@ -15,7 +15,7 @@ load('patient_list.mat')
 % patient_class: "ucsd_tavr_1", patient_num = 1~24
 % patient_class: "ucsd_toshiba", patient_num = 1~21
 
-for patient_num = 16
+for patient_num = 1
     clear Mesh base_lim fv info E smoothing iii
 patient_class = "ucsd_toshiba";
 %patient_num = 1; % the Patinet no. in that patient class
@@ -115,10 +115,10 @@ for jj = 11
   
     info.ef_normal = 70; % Computed from Blender
     if jj <11
-        info.ef_desired = rand()*20 + 70;
+        info.ef_desired = rand()*20 + 50;
         
     else
-        info.ef_desired = rand()*20 + 10;
+        info.ef_desired = rand()*30 + 10;
     end
     
     info.EF = info.ef_desired/info.ef_normal; % 1 - Normal EF; 0 - No EF
